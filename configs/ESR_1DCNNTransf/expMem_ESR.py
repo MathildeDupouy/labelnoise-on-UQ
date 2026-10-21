@@ -16,6 +16,8 @@ from src.Utils.vocabulary import (
 )
 
 if __name__ == "__main__":
+    """Example usage: python configs/ESR_1DCNNTransf/expMem_ESR.py -c configs/ESR_1DCNNTransf/ -e experiments/ESR_1DCNNTransf_mem -n 5
+    """
     parser = argparse.ArgumentParser(description="Experiments test help")
     parser.add_argument("-c", "--config_path", type=str, required=True,
                         help="Path to the configuration folder for ESR")

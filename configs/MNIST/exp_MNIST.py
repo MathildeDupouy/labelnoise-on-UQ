@@ -1,13 +1,21 @@
 import argparse
 import json
+
+# Add project root to sys.path
+import os
 from pathlib import Path
 
+project_root = Path(__file__).resolve().parent.parent.parent
+if str(project_root) not in os.sys.path:
+    os.sys.path.append(str(project_root))
 from src.Scripts.evaluate_exp import main_evaluate_exp
 from src.Scripts.evaluate_uq import main_evaluate_uq
 from src.Scripts.train_config import main_train_config
 from src.Utils.vocabulary import ARGS, DATASET
 
 if __name__ == "__main__":
+    """Example usage: python configs/MNIST/exp_MNIST.py -c configs/MNIST/ -e experiments/MNIST -n 5
+    """
     parser = argparse.ArgumentParser(description="Experiments test help")
     parser.add_argument("-c", "--config_path", type=str, required=True,
                         help="Path to the configuration folder for MNIST")

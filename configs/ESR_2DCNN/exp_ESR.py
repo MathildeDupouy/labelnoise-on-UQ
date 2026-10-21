@@ -1,13 +1,20 @@
 import argparse
 import json
+import os
 from pathlib import Path
 
+# Add project root to sys.path
+project_root = Path(__file__).resolve().parent.parent.parent
+if str(project_root) not in os.sys.path:
+    os.sys.path.append(str(project_root))
 from src.Scripts.evaluate_exp import main_evaluate_exp
 from src.Scripts.evaluate_uq import main_evaluate_uq
 from src.Scripts.train_config import main_train_config
 from src.Utils.vocabulary import ARGS, DATASET
 
 if __name__ == "__main__":
+    """Example usage: python configs/ESR_2DCNN/exp_ESR.py -c configs/ESR_2DCNN/ -e experiments/ESR_2DCNN -n 5
+    """
     parser = argparse.ArgumentParser(description="Experiments test help")
     parser.add_argument("-c", "--config_path", type=str, required=True,
                         help="Path to the configuration folder for ESR")
