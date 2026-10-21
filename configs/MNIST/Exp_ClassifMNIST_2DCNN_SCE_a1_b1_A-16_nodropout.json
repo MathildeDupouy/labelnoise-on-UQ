@@ -32,7 +32,7 @@
     },
     "dataset": {
         "dataset type": "MNIST",
-        "data path": "path/to//data",
+        "data path": "path/to/data",
         "args": {
             "noise_rate": 0.0,
             "remove_class": []

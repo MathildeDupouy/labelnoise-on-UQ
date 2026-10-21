@@ -32,7 +32,7 @@
     },
     "dataset": {
         "dataset type": "ESR",
-        "csv path": "path/to//data/EEG_Epileptic_Seizure_Recognition/Epileptic_Seizure_Recognition.csv",
+        "csv path": "path/to/data/EEG_Epileptic_Seizure_Recognition/Epileptic_Seizure_Recognition.csv",
         "test size": 0.2,
         "args": {
             "constructor": "EEG_spectro_constructor",

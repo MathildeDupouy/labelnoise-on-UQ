@@ -39,8 +39,8 @@
     "dataset": {
         "dataset type": "PTB sub",
         "seed": 42,
-        "normal path": "path/to//data/ECG_Heartbeat_Categorization_Dataset/ptbdb_normal.csv",
-        "abnormal path": "path/to//data/ECG_Heartbeat_Categorization_Dataset/ptbdb_abnormal.csv",
+        "normal path": "path/to/data/ECG_Heartbeat_Categorization_Dataset/ptbdb_normal.csv",
+        "abnormal path": "path/to/data/ECG_Heartbeat_Categorization_Dataset/ptbdb_abnormal.csv",
         "test size": 0.2,
         "args": {
             "constructor": "ECG_audio_constructor",
