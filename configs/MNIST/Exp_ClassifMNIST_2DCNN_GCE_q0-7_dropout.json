@@ -1,0 +1,123 @@
+{
+    "name": "Exp_ClassifMNIST_2DCNN_GCE_q0-4_nodropout",
+    "description": "",
+    "device": "cuda",
+    "nb_epochs": 20,
+    "nb inference": 1,
+    "batch size": [
+        64,
+        64
+    ],
+    "model": {
+        "name": "timefreq2Dcnn",
+        "args": {
+            "nb_init_filters": 12,
+            "increase_nb_filters_mode": "multiplicative",
+            "pooling_mode": "maxpool",
+            "dropout_probability": 0.2,
+            "num_classes": 10,
+            "input_shape": [
+                1,
+                28,
+                28
+            ]
+        }
+    },
+    "optimizer": {
+        "name": "Adam",
+        "args": {
+            "lr": 1e-05,
+            "weight_decay": 1e-05
+        }
+    },
+    "dataset": {
+        "dataset type": "MNIST",
+        "data path": "path/to//data",
+        "args": {
+            "noise_rate": 0.0,
+            "remove_class": []
+        }
+    },
+    "train labels": {
+        "labels": [
+            "hard-target"
+        ],
+        "loss": [
+            "GCE"
+        ],
+        "weight": [
+            1
+        ],
+        "prediction position": [
+            0
+        ],
+        "args": [
+            {
+                "q": 0.7
+            }
+        ]
+    },
+    "test labels": [
+        "hard_target"
+    ],
+    "projection": {
+        "name": "TSNE",
+        "args": {
+            "n_components": 2,
+            "perplexity": 40,
+            "early_exaggeration": 5,
+            "learning_rate": 1000,
+            "max_iter": 3000,
+            "n_jobs": 4
+        }
+    },
+    "uncertainty": [
+        {
+            "name": "MCdropout entropy",
+            "prediction position": [
+                0
+            ],
+            "labels": [
+                "hard-target"
+            ],
+            "args": {
+                "test dropout": 0.2
+            }
+        }
+    ],
+    "evaluation": {
+        "all": {
+            "labels": [
+                "hard-target"
+            ],
+            "metric": [
+                "MCC hard-target",
+                "F1 hard-target",
+                "acc hard-target",
+                "balanced acc hard-target",
+                "top-2 acc hard-target",
+                "classification report hard-target"
+            ],
+            "args": [
+                {},
+                {
+                    "average": "macro"
+                },
+                {},
+                {},
+                {},
+                {
+                    "output_dict": true
+                }
+            ]
+        },
+        "train": {
+            "labels": [],
+            "metric": []
+        },
+        "test": {
+            "labels": [],
+            "metric": []
+        }
+    }
+}

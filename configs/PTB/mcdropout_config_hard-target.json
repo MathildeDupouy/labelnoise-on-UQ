@@ -1,0 +1,17 @@
+{
+    "nb inference": 5,
+    "uncertainty": [
+        {
+            "name": "MCdropout entropy",
+            "prediction position": [
+                0
+            ],
+            "labels": [
+                "hard-target"
+            ],
+            "args": {
+                "test dropout": 0.2
+            }
+        }
+    ]
+}

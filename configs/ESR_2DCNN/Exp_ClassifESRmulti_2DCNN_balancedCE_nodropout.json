@@ -1,0 +1,127 @@
+{
+    "name": "Exp_ClassifESRmulti_2DCNN_balancedCE_nodropout",
+    "description": "",
+    "device": "cuda",
+    "nb_epochs": 30,
+    "nb inference": 1,
+    "batch size": [
+        32,
+        32
+    ],
+    "model": {
+        "name": "timefreq2Dcnn",
+        "args": {
+            "nb_init_filters": 32,
+            "increase_nb_filters_mode": "multiplicative",
+            "pooling_mode": "maxpool",
+            "dropout_probability": 0.0,
+            "num_classes": 5,
+            "input_shape": [
+                1,
+                32,
+                37
+            ]
+        }
+    },
+    "optimizer": {
+        "name": "Adam",
+        "args": {
+            "lr": 1e-05,
+            "weight_decay": 1e-06
+        }
+    },
+    "dataset": {
+        "dataset type": "ESR",
+        "csv path": "path/to//data/EEG_Epileptic_Seizure_Recognition/Epileptic_Seizure_Recognition.csv",
+        "test size": 0.2,
+        "args": {
+            "constructor": "EEG_spectro_constructor",
+            "constructor_args": {
+                "n_fft": 32,
+                "n_overlap": 4,
+                "window": "blackman",
+                "sample_rate": 178
+            },
+            "noise_rate": 0.0,
+            "noise_type": "multi-target",
+            "normalize": true
+        }
+    },
+    "train labels": {
+        "labels": [
+            "multi-target"
+        ],
+        "loss": [
+            "weighted CE"
+        ],
+        "weight": [
+            1
+        ],
+        "prediction position": [
+            0
+        ],
+        "args": [
+            {}
+        ]
+    },
+    "test labels": [
+        "multi-target"
+    ],
+    "projection": {
+        "name": "TSNE",
+        "args": {
+            "n_components": 2,
+            "perplexity": 40,
+            "early_exaggeration": 5,
+            "learning_rate": 1000,
+            "max_iter": 3000,
+            "n_jobs": 4
+        }
+    },
+    "uncertainty": [
+        {
+            "name": "MCdropout entropy",
+            "prediction position": [
+                0
+            ],
+            "labels": [
+                "multi-target"
+            ]
+        }
+    ],
+    "evaluation": {
+        "all": {
+            "labels": [
+                "multi-target"
+            ],
+            "metric": [
+                "MCC multi-target",
+                "F1 multi-target",
+                "acc multi-target",
+                "balanced acc multi-target",
+                "top-2 acc multi-target",
+                "classification report multi-target"
+            ],
+            "args": [
+                {},
+                {
+                    "average": "macro"
+                },
+                {},
+                {},
+                {},
+                {
+                    "output_dict": true
+                }
+            ]
+        },
+        "train": {
+            "labels": [],
+            "metric": []
+        },
+        "test": {
+            "labels": [],
+            "metric": []
+        }
+    }
+}

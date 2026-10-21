@@ -1,0 +1,129 @@
+{
+    "name": "Exp_ClassifPTBsub_1DCNNTransf_CE_nodropout",
+    "description": "PTB sub classifier",
+    "device": "cuda",
+    "nb_epochs": 150,
+    "nb inference": 1,
+    "batch size": [
+        16,
+        16
+    ],
+    "model": {
+        "name": "time1Dcnntransformer",
+        "args": {
+            "in_channels": 1,
+            "nhead": 8,
+            "d_hid": 64,
+            "nlayers": 8,
+            "dropout": 0.0,
+            "d_model": 128,
+            "n_conv_layers": 4,
+            "nb_features_projection": 10,
+            "num_classes": 2
+        }
+    },
+    "optimizer": {
+        "name": "Noam",
+        "args": {
+            "lr": 0.1,
+            "betas": [
+                0.9,
+                0.999
+            ],
+            "eps": 1e-16,
+            "optimized_update": true,
+            "amsgrad": true,
+            "warmup": 4000
+        }
+    },
+    "dataset": {
+        "dataset type": "PTB sub",
+        "seed": 42,
+        "normal path": "path/to//data/ECG_Heartbeat_Categorization_Dataset/ptbdb_normal.csv",
+        "abnormal path": "path/to//data/ECG_Heartbeat_Categorization_Dataset/ptbdb_abnormal.csv",
+        "test size": 0.2,
+        "args": {
+            "constructor": "ECG_audio_constructor",
+            "constructor_args": {},
+            "noise_rate": 0.0,
+            "normalize": true
+        }
+    },
+    "train labels": {
+        "labels": [
+            "hard-target"
+        ],
+        "loss": [
+            "CE"
+        ],
+        "weight": [
+            1
+        ],
+        "prediction position": [
+            0
+        ],
+        "args": [
+            {}
+        ]
+    },
+    "test labels": [
+        "hard-target"
+    ],
+    "projection": {
+        "name": "TSNE",
+        "args": {
+            "n_components": 2,
+            "perplexity": 40,
+            "early_exaggeration": 5,
+            "learning_rate": 1000,
+            "max_iter": 3000,
+            "n_jobs": 4
+        }
+    },
+    "uncertainty": [
+        {
+            "name": "MCdropout entropy",
+            "prediction position": [
+                0
+            ],
+            "labels": [
+                "hard-target"
+            ]
+        }
+    ],
+    "evaluation": {
+        "all": {
+            "labels": [
+                "hard-target"
+            ],
+            "metric": [
+                "MCC hard-target",
+                "f1 hard-target",
+                "acc hard-target",
+                "balanced acc hard-target",
+                "top-2 acc hard-target",
+                "classification report hard-target"
+            ],
+            "args": [
+                {},
+                {
+                    "average": "macro"
+                },
+                {},
+                {},
+                {},
+                {
+                    "output_dict": true
+                }
+            ]
+        },
+        "train": {
+            "labels": [],
+            "metric": []
+        },
+        "test": {
+            "labels": [],
+            "metric": []
+        }
+    }
+}
