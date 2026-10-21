@@ -1,0 +1,13 @@
+numpy
+torch
+torchvision
+GitPython
+matplotlib
+pandas
+scipy
+scikit-learn
+h5py
+torchinfo
+tqdm
+ipykernel
+labml-nn
