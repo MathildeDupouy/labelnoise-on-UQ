@@ -259,16 +259,6 @@ if __name__=='__main__':
     # nb_features_projection = 4
     # num_classes = 5
     
-    # HITS config
-    # nhead = 8 # corresponds to the number of layers in the Encoder/Decoder
-    # d_hid = 64
-    # nlayers = 8
-    # dropout = 0.1
-    # d_model = 128
-    # n_conv_layers = 2
-    # nb_features_projection = 10
-    # num_classes = 3
-    
     # classification_pool = 'Avg'
     # classification_pool = 'ClassToken'
     # pos_encoder_type = 'MLHC'
@@ -292,7 +282,6 @@ if __name__=='__main__':
     # audio_length = 1400
     audio_length = 187 # PTB
     # audio_length = 178 # ESR
-    # audio_length = 1400 # HITS S51-13k-V9k
     bs = 4
     dummy_data = torch.randn((bs, in_channels, audio_length)).to(device)
     print("Shape of the input data: {}".format(dummy_data.shape))

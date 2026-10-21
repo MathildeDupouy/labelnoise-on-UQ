@@ -1,6 +1,5 @@
 # TRANSLATE THE CONFIG FILE
 import datetime
-import json
 import os
 from pathlib import Path
 
@@ -12,16 +11,14 @@ from sklearn.utils.class_weight import compute_class_weight
 from src.DataManipulation.balance_dataset import balance_by_subsampling
 from src.DataManipulation.ECG_Dataset import ECG_Dataset, ptb_split_train_test
 from src.DataManipulation.EEG_Dataset import EEG_Dataset, esr_split_train_test
-
-# from src.DataManipulation.HITS_2D_dataset import HITS_2D_Dataset
 from src.DataManipulation.MNIST_Dataset import MNISTDataset
+from torch.utils.data import DataLoader
+
 from src.Models.CNNs.time_frequency_simple_CNN import TimeFrequency2DCNN
 from src.Models.tools import weights_init
 from src.Models.Transformers.Transformer_Encoder_RawAudioMultiChannelCNN import (
     TransformerClassifierMultichannelCNN,
 )
-from torch.utils.data import DataLoader
-
 from src.Utils.GCE import GeneralizedCrossEntropyLoss
 from src.Utils.GeoJSD import GeoJSDLoss
 from src.Utils.uncertainty import (

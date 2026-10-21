@@ -54,7 +54,7 @@ if __name__ == "__main__":
     #=========== Test balance_by_subsampling ===========
     from src.DataManipulation.ECG_Dataset import ptb_split_train_test
 
-    dataset_path = Path("/home/dupouy/Documents/data/ECG_Heartbeat_Categorization_Dataset")
+    dataset_path = Path("/path/to/data/ECG_Heartbeat_Categorization_Dataset")
     #------- PTB test
     abnormal_path = dataset_path/"ptbdb_abnormal.csv"
     normal_path = dataset_path/"ptbdb_normal.csv"
@@ -83,21 +83,21 @@ if __name__ == "__main__":
     
     # Real datasets
     # MNIST
-    from DataManipulation.MNIST_Dataset import MNISTDataset
+    from src.DataManipulation.MNIST_Dataset import MNISTDataset
 
-    from Utils.vocabulary import HARD_TARGET, LABELS, MULTI_TARGET
+    from src.Utils.vocabulary import HARD_TARGET, LABELS, MULTI_TARGET
     print("-- MNIST creation")
-    data_path = Path("/home/dupouy/Documents/data/")
+    data_path = Path("/path/to/data/")
     train_dataset = MNISTDataset(data_path, train=True)
     samples_classes = np.array([sample[1][HARD_TARGET] for sample in train_dataset])
     class_numbers_mnist = [np.sum(samples_classes == i) for i in np.unique(samples_classes)]
     
     # PTB sub
     print("-- PTB sub creation")
-    from DataManipulation.ECG_Dataset import ECG_Dataset, ptb_split_train_test
+    from src.DataManipulation.ECG_Dataset import ECG_Dataset, ptb_split_train_test
     train_list, test_list = ptb_split_train_test(
-        "/home/dupouy/Documents/data/ECG_Heartbeat_Categorization_Dataset/ptbdb_abnormal.csv", 
-        "/home/dupouy/Documents/data/ECG_Heartbeat_Categorization_Dataset/ptbdb_normal.csv",
+        "/path/to/data/ECG_Heartbeat_Categorization_Dataset/ptbdb_abnormal.csv", 
+        "/path/to/data/ECG_Heartbeat_Categorization_Dataset/ptbdb_normal.csv",
         test_size=0.2
         )
     train_list = balance_by_subsampling(train_list, seed=42)
@@ -112,10 +112,10 @@ if __name__ == "__main__":
 
     # PTB
     print("-- PTB creation")
-    from DataManipulation.ECG_Dataset import ECG_Dataset, ptb_split_train_test
+    from src.DataManipulation.ECG_Dataset import ECG_Dataset, ptb_split_train_test
     train_list, test_list = ptb_split_train_test(
-        "/home/dupouy/Documents/data/ECG_Heartbeat_Categorization_Dataset/ptbdb_abnormal.csv", 
-        "/home/dupouy/Documents/data/ECG_Heartbeat_Categorization_Dataset/ptbdb_normal.csv",
+        "/path/to/data/ECG_Heartbeat_Categorization_Dataset/ptbdb_abnormal.csv", 
+        "/path/to/data/ECG_Heartbeat_Categorization_Dataset/ptbdb_normal.csv",
         test_size=0.2
         )
     train_dataset = ECG_Dataset(
@@ -129,9 +129,9 @@ if __name__ == "__main__":
 
     # ESR
     print("-- ESR creation")
-    from DataManipulation.EEG_Dataset import EEG_Dataset, esr_split_train_test
+    from src.DataManipulation.EEG_Dataset import EEG_Dataset, esr_split_train_test
     train_list, test_list = esr_split_train_test(
-        "/home/dupouy/Documents/data/EEG_Epileptic_Seizure_Recognition/Epileptic_Seizure_Recognition.csv",
+        "/path/to/data/EEG_Epileptic_Seizure_Recognition/Epileptic_Seizure_Recognition.csv",
         test_size=0.2
         )
     train_dataset = EEG_Dataset(

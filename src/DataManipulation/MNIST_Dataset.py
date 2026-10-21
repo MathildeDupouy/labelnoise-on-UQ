@@ -129,7 +129,7 @@ class MNISTDataset(Dataset):
         return image, labels, item
 
 if __name__ == "__main__":
-    data_path = Path("/home/dupouy/Documents/data/")
+    data_path = Path("/path/to/data/")
 
     #----- Test classical dataset
     print("Testing classical dataset")

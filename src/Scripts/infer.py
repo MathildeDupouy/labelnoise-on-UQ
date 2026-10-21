@@ -13,18 +13,6 @@ Arguments:
 
     -dc --dataset_config, str, optional (default None)
     Path to the JSON file with the configuration from the dataset
-    Exemple :
-    {
-        "dataset type": "HITS_2D",
-        "data path": "/path/to/data/dataset_name/data.hdf5",
-        "initial_duration": 1500,
-        "duration": 400,
-        "multiple": 16,
-        "args": {
-            "remove_pos_U": false,
-            "remove_class_U": false
-        }
-    }
 
     -uc --uncertainty_config, str, optional (default None)
     Path to the JSON file with the configuration of uncertainty evaluation

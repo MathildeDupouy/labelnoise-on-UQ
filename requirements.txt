@@ -11,3 +11,4 @@ torchinfo
 tqdm
 ipykernel
 labml-nn
+seaborn

@@ -83,7 +83,7 @@ class EEG_Dataset(Dataset):
         elif constructor == "EEG_spectro_constructor":
             self.constructor = EEG_Spectrogram_Constructor(**constructor_args)
         else:
-            raise ValueError(f"Constructor {constructor} not recognized (must be a string, one of HITS_sticker_constructor, HITS_audio_constructor).")
+            raise ValueError(f"Constructor {constructor} not recognized (must be a string, one of EEG_sticker_constructor, EEG_audio_constructor).")
 
         #----- Noise
         assert noise_rate >= 0 and noise_rate <= 1, f"Noise rate {noise_rate} must be in [0, 1]."
@@ -250,7 +250,7 @@ if __name__ == "__main__":
 
     import matplotlib.pyplot as plt
 
-    # dataset_path = Path("/home/dupouy/Documents/data/EEG_Epileptic_Seizure_Recognition")
+    # dataset_path = Path("/path/to/data/EEG_Epileptic_Seizure_Recognition")
     dataset_path =  Path(r"data\EEG_Epileptic_Seizure_Recognition")
     #------- ESR test
     csv_path = dataset_path/"Epileptic_Seizure_Recognition.csv"

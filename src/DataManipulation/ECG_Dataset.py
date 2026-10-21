@@ -230,7 +230,7 @@ if __name__ == "__main__":
 
     import matplotlib.pyplot as plt
 
-    dataset_path = Path("/home/dupouy/Documents/data/ECG_Heartbeat_Categorization_Dataset")
+    dataset_path = Path("/path/to/data/ECG_Heartbeat_Categorization_Dataset")
     
     #------- PTB test
     abnormal_path = dataset_path/"ptbdb_abnormal.csv"

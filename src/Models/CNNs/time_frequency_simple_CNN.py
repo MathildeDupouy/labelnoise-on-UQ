@@ -191,8 +191,6 @@ if __name__=='__main__':
     # nb_channels, h_in, w_in = 3, 214, 100
     # nb_channels, h_in, w_in = 1, 28, 28 # MNIST
     # nb_channels, h_in, w_in = 1, 100, 100 # MNIST high resolution
-    # nb_channels, h_in, w_in = 3, 214, 100 # HITS IABM
-    # nb_channels, h_in, w_in = 3, 72, 33 # HITS low resolution
     # nb_channels, h_in, w_in = 1, 32, 39 # PTB
     nb_channels, h_in, w_in = 1, 32, 37 # ESR 2D
     print("Sample size:", nb_channels * h_in * w_in)
@@ -200,9 +198,7 @@ if __name__=='__main__':
 
     # Creating the model
     # nb_init_filters = 12 # MNIST
-    # nb_init_filters = 16 # HITS (GDEC, IABM), PTB and ESR
     nb_init_filters = 32 # ESR 2D
-    # nb_init_filters = 256 # HITS-sada
     increase_nb_filters_mode = 'multiplicative'
     pooling_mode = 'maxpool'
     dropout_probability = 0.2
@@ -210,7 +206,6 @@ if __name__=='__main__':
     # num_classes = 10 # MNIST
     num_classes = 5 # ESR multi
     # num_classes = 2 # PTB and ESR
-    # num_classes = 3 # HITS
     model = TimeFrequency2DCNN(
                                     nb_init_filters,
                                     increase_nb_filters_mode,
